@@ -8,6 +8,7 @@ import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import axios from 'axios'
 
+import schedule from "../../data/schedule.json";
 
 import styles from './style.module.css'
 import { read } from 'fs';
@@ -85,13 +86,13 @@ class Schedule extends React.Component {
 
     async componentWillMount() {
         // get data from cms and update the state
-        let response = await axios.get('https://api.excelmec.org/api/schedule')
-        this.totalEvents= response.data;
+        // let response = await axios.get('https://api.excelmec.org/api/schedule')
+        this.totalEvents= schedule;
 
         this.setState({
-            totalEvents: response.data,
+            totalEvents: schedule,
             loading:false,
-            events: response.data.filter(event => event.day === this.state.currentDay)
+            events: schedule.filter(event => event.day === this.state.currentDay)
         })
     }
     componentDidMount(){

@@ -4,6 +4,8 @@ import styles from './style.module.css'
 import axios from 'axios'
 import {Route, Link} from 'react-router-dom'
 
+import events from "../../data/events.json";
+
 const EventCardImport = () => import('components/event-card')
 const EventCard = asyncComponent(EventCardImport)
 
@@ -23,8 +25,8 @@ export default class Workshops extends React.Component {
         }
     }
     async componentWillMount() {
-      let response = await axios.get('https://api.excelmec.org/api/events')
-      this.setState({events: response.data.filter(a => a.type === "Workshop"),loading: false})
+    //   let response = await axios.get('https://api.excelmec.org/api/events')
+      this.setState({events: events.filter(a => a.type === "Workshop"),loading: false})
       
     }
     componentDidMount(){

@@ -14,6 +14,10 @@ import axios from "axios";
 import { Link, Route } from "react-router-dom";
 import CompetitionCard from "../../components/competition-card";
 
+import competitions from "../../data/competitions.json";
+import events from "../../data/events.json";
+import schedule from "../../data/schedule.json";
+
 
 const CompetitionEntryImport = () => import("components/competition-entry");
 const CompetitionEntry = asyncComponent(CompetitionEntryImport);
@@ -51,14 +55,14 @@ export default class Competitions extends React.Component {
   }
 
   async componentWillMount() {
-      let response = await axios.get('https://api.excelmec.org/api/competitions', 
-      {
-        headers:{
-          "Origin" : "https://api.excelmec.org/"
-        }
-      }
-      )
-      this.setState({events: response.data, loading: false})
+      // let response = await axios.get('https://api.excelmec.org/api/competitions', 
+      // {
+      //   headers:{
+      //     "Origin" : "https://api.excelmec.org/"
+      //   }
+      // }
+      // )
+      this.setState({events: competitions, loading: false})
   }
 
   // componentWillUnmount() {

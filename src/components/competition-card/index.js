@@ -5,6 +5,8 @@ import styles from './style.module.css'
 import AboutMiniGrid from "../about-mini-grid"
 import AboutContactGrid from "../about-contact-grid"
 
+import competitions from "../../data/competitions.json";
+
 
 export default class CompetitionCard extends React.Component {
 
@@ -53,9 +55,9 @@ export default class CompetitionCard extends React.Component {
 
       async componentWillMount() {
         var comp = this
-        let response = await axios.get('https://api.excelmec.org/api/competitions')
+        // let response = await axios.get('https://api.excelmec.org/api/competitions')
         // console.log('RESPONSE',response.data)
-        response.data.forEach(async (val) => {
+        competitions.forEach(async (val) => {
             if(val.codename === comp.props.match.params['competition']) {
                 // let data = await axios.get(`http://34.93.246.77/api/competitions/${val.id}`);
                 await comp.setState({

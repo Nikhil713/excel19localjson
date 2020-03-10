@@ -7,6 +7,8 @@ import styles from './style.module.css'
 // import hackfortomorrow from '../../img/hftlogo.png'
 import axios from 'axios'
 
+import events from "../../data/events.json";
+
 const EventCardImport = () => import('components/event-card')
 const EventCard = asyncComponent(EventCardImport)
 
@@ -26,8 +28,8 @@ export default class Events extends React.Component {
     }
 
     async componentWillMount() {
-      let response = await axios.get('https://api.excelmec.org/api/events')
-      this.setState({events: response.data.filter(a => a.type === "Event"), loading: false})
+    //   let response = await axios.get('https://api.excelmec.org/api/events')
+      this.setState({events: events.filter(a => a.type === "Event"), loading: false})
       
     }
 
